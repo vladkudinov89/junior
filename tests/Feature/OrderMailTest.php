@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Mail\SendOrderMail;
+use App\User;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -15,8 +16,9 @@ class OrderMailTest extends TestCase
     public function test_send_mail()
     {
         Mail::fake();
-
-        $response = $this->json('POST', '/api/v1/1');
+        $user1 = factory(User::class)->create();
+        dd($user1);
+        $response =  $this->actingAs($user1)->json('POST', '/api/v1/1');
         $response->assertStatus(200);
 
         Mail::assertSent(SendOrderMail::class, 1);
