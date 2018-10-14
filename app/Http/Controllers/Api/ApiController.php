@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Mail;
 
 class ApiController extends Controller
 {
-    public function event(int $event) : void
+    public function event(int $event)
     {
-        Mail::to(env('MAIL_ADDRESS'))->send(new SendOrderMail($event));
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new SendOrderMail($event));
     }
 }

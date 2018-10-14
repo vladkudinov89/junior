@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/api/v1/{event}' , 'Api/ApiController@event');
+Route::post('/v1/{event}' , 'Api\ApiController@event');
