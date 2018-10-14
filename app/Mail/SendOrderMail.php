@@ -11,7 +11,7 @@ class SendOrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-   private $order;
+    protected $order;
     public function __construct(int $order)
     {
         $this->order = $order;
