@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:api'] , function (){
+    Route::post('/v1/new_order' , 'Api\ApiController@order');
 });
-
-//Route::middleware('auth:api' , function (){
-//    Route::post('/v1/{event}' , 'Api\ApiController@event');
-//});
-Route::post('/v1/{event}' , 'Api\ApiController@event');
